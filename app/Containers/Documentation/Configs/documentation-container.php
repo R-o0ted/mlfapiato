@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'executable' => '$(npm bin)/apidoc',
+    'executable' => 'apidoc',
 
     /*
     |--------------------------------------------------------------------------
@@ -33,17 +33,17 @@ return [
     'types' => [
 
         'public' => [
-            'url' => 'api/documentation',
+            'url' => 'public/docs/api',
             'routes' => [
                 'public',
             ],
         ],
 
-        'private' => [
-            'url' => 'api/private/documentation',
-            'routes' => [
-                'private',
-                'public',
+        'private' => [                    // todo: Restrict access for viewing internal API docs.
+            'url' => 'docs/api',          // You can add new dns record to this endpoint if you'r on deploying for production.
+            'routes' => [                 // And than you can add robot.txt or .htaccess or anything to restrict access for viewing internal API docs.
+                'private',                // But for now i think exclude it from public path is one of better ways for production.
+                'public',                 // .
             ],
         ],
     ],
@@ -57,5 +57,5 @@ return [
     |
     */
 
-    'html_files' => 'public/'
+    'html_files' => ''
 ];
